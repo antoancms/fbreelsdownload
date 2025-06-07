@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: fastvideosave-clone
+    env: python
+    buildCommand: |
+      pip install flask
+      curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
+      chmod a+rx /usr/local/bin/yt-dlp
+    startCommand: python app.py
+    envVars:
+      - key: PORT
+        value: 8080
